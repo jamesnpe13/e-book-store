@@ -1,0 +1,415 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+$primary-color: rgb(189, 223, 210);
+$secondary-color: rgb(0, 67, 150);
+
+body {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1.2em;
+   background-color: rgb(240, 240, 240);
+}
+body.unscrollable {
+   height: 100vh;
+   overflow: hidden;
+}
+body::-webkit-scrollbar {
+   display: none;
+}
+header {
+   height: 80px;
+   background: rgb(50, 50, 50);
+   color: white;
+
+   position: relative;
+   .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 90%;
+      padding-inline: 100px;
+
+      .cart-icon-container {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+
+         .circle {
+            background-color: rgb(51, 51, 51);
+            outline: 1px solid rgb(65, 65, 65);
+            height: 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            padding: 20px 15px;
+            gap: 10px;
+            box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.327);
+            cursor: pointer;
+
+            span {
+               color: white;
+               font-weight: bold;
+               transform: translateY(5%);
+               user-select: none;
+            }
+         }
+
+         img {
+            filter: invert(1);
+            width: 26px;
+         }
+      }
+   }
+   .accent-bar {
+      // position: absolute;
+      height: 5px;
+      background-color: mix($primary-color, grey, 60%);
+      width: 100%;
+      left: 0;
+      bottom: 0;
+   }
+}
+.filter-bar {
+   width: 100%;
+   height: 50px;
+   background-color: $primary-color;
+   padding-inline: 100px;
+}
+
+// card container
+
+.cards-container {
+   display: grid;
+   width: max-content;
+   margin: 100px auto;
+   grid-template-columns: repeat(4, auto);
+   gap: 50px;
+   @media (max-width: 1500px) {
+      grid-template-columns: repeat(2, auto);
+   }
+   @media (max-width: 730px) {
+      grid-template-columns: repeat(1, auto);
+   }
+}
+
+.card {
+   color: rgb(53, 53, 53);
+   border-radius: 10px;
+   background-color: rgb(255, 255, 255);
+   min-width: 250px;
+   min-height: 250px;
+   padding: 40px 25px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   position: relative;
+   // overflow: hidden;
+   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.256);
+
+   .image-container {
+      img {
+         width: 250px;
+         aspect-ratio: 1 / 1;
+         object-fit: contain;
+         object-position: center;
+      }
+   }
+
+   main {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 50px;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      width: 250px;
+
+      h2 {
+         font-size: 1.2em;
+         color: rgb(84, 84, 84);
+      }
+      span {
+         color: grey;
+      }
+      .details-button {
+         padding: 10px 20px;
+         background-color: mix($primary-color, white, 50%);
+         user-select: none;
+         border-radius: 10px;
+         cursor: pointer;
+         transition: 0.2s;
+
+         span {
+            color: black;
+         }
+
+         &:hover {
+            scale: 1.1;
+         }
+      }
+   }
+
+   footer {
+      background-color: $primary-color;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      // padding: 20px;
+      height: 60px;
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      border-radius: 10px;
+      & > * {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         user-select: none;
+      }
+
+      .addtocart-button {
+         background-color: $primary-color;
+         height: 100%;
+         cursor: pointer;
+         transition: 0.2s all;
+         font-size: 1em;
+         color: black;
+         display: flex;
+         align-items: center;
+         gap: 20px;
+         border-radius: 10px;
+      }
+      .addtocart-button:hover {
+         background-color: mix($primary-color, white, 60%);
+         scale: 1.1;
+      }
+      .addtocart-icon {
+         width: 26px;
+      }
+   }
+}
+
+// product modal
+
+.product-modal {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   border: none;
+   border-radius: 15px;
+   padding: 50px;
+   padding-top: 80px;
+   transform: translate(-50%, -50%);
+
+   .close-modal-button {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+         scale: 1.1;
+      }
+   }
+
+   .container {
+      display: grid;
+      grid-template-columns: 2fr 4fr;
+      gap: 50px;
+      height: auto;
+
+      .image-container {
+         display: flex;
+         flex-direction: column;
+         gap: 8px;
+         .image {
+            width: 100%;
+            object-fit: contain;
+            object-position: top;
+            margin-bottom: 20px;
+         }
+         span {
+            color: $secondary-color;
+         }
+         .isbn {
+            color: grey;
+            font-size: 0.8em;
+         }
+      }
+
+      .text-container {
+         display: flex;
+         flex-direction: column;
+         gap: 25px;
+
+         .description {
+            line-height: 1.2em;
+         }
+      }
+      .addtocart-modal-button {
+         grid-column: 1 / -1;
+         height: 50px;
+         width: 100%;
+         border-radius: 50px;
+         background-color: $primary-color;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-top: 20px;
+         transition: 0.2s;
+         cursor: pointer;
+         span {
+            color: black;
+            user-select: none;
+         }
+         &:hover {
+            scale: 1.1;
+         }
+      }
+   }
+
+   &::backdrop {
+      backdrop-filter: blur(5px);
+   }
+}
+
+.addtocart-popup-modal {
+   padding: 50px;
+   border-radius: 15px;
+   border: none;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   user-select: none;
+
+   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.223);
+   .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+   }
+
+   &::backdrop {
+      opacity: 1;
+      backdrop-filter: blur(5px);
+   }
+   img {
+      width: 36px;
+   }
+}
+
+.user-cart {
+   z-index: 1;
+   .container {
+      position: fixed;
+      background-color: white;
+      width: 500px;
+      height: 100vh;
+      top: 0;
+      right: 0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.301);
+      padding: 100px 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .cart-total {
+         align-self: flex-end;
+      }
+
+      .order-container {
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+         .product-order {
+            height: 100px;
+            width: 100%;
+            outline: 1px solid rgb(177, 177, 177);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+            .left-container {
+               display: flex;
+               flex-direction: column;
+
+               .title {
+                  font-weight: bold;
+               }
+               .author {
+                  font-size: 0.9em;
+               }
+            }
+            .right-container {
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+               align-items: center;
+
+               .price {
+                  color: $secondary-color;
+               }
+
+               .remove-button {
+                  user-select: none;
+                  cursor: pointer;
+               }
+            }
+         }
+      }
+   }
+}
+
+// radio buttons
+.filter-container {
+   height: 100%;
+   display: flex;
+   gap: 40px;
+   align-items: center;
+   color: rgb(50, 50, 50);
+
+   label {
+      display: flex;
+      gap: 10px;
+   }
+   .radio-container {
+      width: max-content;
+      margin: 100px;
+      margin-inline: auto;
+      display: flex;
+      gap: 50px;
+
+      label {
+         display: flex;
+         gap: 10px;
+      }
+   }
+
+   //    input[type="radio"] {
+   //       appearance: none;
+
+   //       border: 3px solid rgb(43, 33, 108);
+   //       border-radius: 50%;
+   //       width: 26px;
+   //       height: 26px;
+   //       transform: translateY(-10%);
+
+   //       display: grid;
+   //       place-content: center;
+   //    }
+
+   //    input[type="radio"]:checked::after {
+   //       content: "";
+   //       background-color: rgb(36, 124, 255);
+   //       width: 12px;
+   //       height: 12px;
+   //       border-radius: 50%;
+   //    }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./css/main.css" />
+      <title>Formative 2</title>
+   </head>
+   <body>
+      <dialog class="product-modal">
+         <div class="container">
+            <img class="close-modal-button" src="./images/icons/close.svg" alt="" />
+            <div class="image-container">
+               <img class="image" src="./images/A Spark of Light.jpg" alt="" />
+               <span class="author">Author</span>
+               <span class="date">Date</span>
+               <span class="pages">Pages</span>
+               <span class="isbn">isbn</span>
+               <div class="addtocart-modal-button">
+                  <span>Add to cart</span>
+               </div>
+            </div>
+
+            <div class="text-container">
+               <h2 class="title">Product Title</h2>
+               <p class="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam officiis ut obcaecati aliquid, laborum expedita laboriosam doloremque architecto reprehenderit assumenda error provident? At maxime ut debitis dicta culpa mollitia
+                  similique suscipit, praesentium quibusdam, laborum fugit omnis et commodi eveniet ducimus vel odit dolore incidunt rerum doloribus beatae. Ipsum, dignissimos qui?
+               </p>
+            </div>
+         </div>
+      </dialog>
+      <dialog class="addtocart-popup-modal">
+         <div class="container">
+            <h2>Item added to cart</h2>
+            <img src="./images/icons/cart.svg" alt="" />
+         </div>
+      </dialog>
+      <dialog class="user-cart">
+         <div class="container">
+            <h2>Order Summary</h2>
+            <div class="order-container">
+               <!-- product -->
+               <!-- <div class="product-order">
+                  <div class="left-container">
+                     <span class="title">Product Title</span>
+                     <span class="author">Book author</span>
+                  </div>
+                  <div class="right-container">
+                     <span class="price">$00.00</span>
+                     <span class="remove-button">remove</span>
+                  </div>
+               </div> -->
+               <!-- product -->
+            </div>
+            <h3 class="cart-total">Total $00.00</h3>
+         </div>
+      </dialog>
+      <header>
+         <div class="logo-container">
+            <h1>e-bookstore</h1>
+            <div class="cart-icon-container">
+               <div class="circle">
+                  <img src="./images/icons/cart.svg" alt="" />
+                  <span class="cart-count">0</span>
+               </div>
+            </div>
+         </div>
+         <div class="accent-bar"></div>
+         <div class="filter-bar">
+            <div class="filter-container">
+               <label for="">
+                  <input checked type="radio" name="filter" id="" value="All" />
+                  <span>All</span>
+               </label>
+               <label for="">
+                  <input type="radio" name="filter" id="" value="eBook" />
+                  <span>eBook</span>
+               </label>
+               <label for="">
+                  <input type="radio" name="filter" id="" value="Paperback" />
+                  <span>Paperback</span>
+               </label>
+            </div>
+         </div>
+      </header>
+      <div class="cards-container"></div>
+
+      <script defer src="./js/script.js"></script>
+   </body>
+</html>

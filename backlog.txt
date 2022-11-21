@@ -1,0 +1,37 @@
+------------UI
+design ui in HTML (temporary)
+
+style classes using css
+
+
+ 
+------------FETCH DATA
+
+replicate ui using JS
+
+fetch JSON data
+
+
+
+------------CREATE NEW COMPONENT
+
+create new elements for JSON length using loop
+
+
+
+------------ASSIGN DATA TO NEW COMPONENT
+
+assign data to new elements inside loop
+
+
+
+------------FILTER
+
+hide and display cards using .filter() and classlist.add()
+
+
+------------ADD VISUALS CSS
+
+add animations using css and js
+improve styling in css
+
